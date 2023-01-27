@@ -12,6 +12,7 @@ describe("Storage", function () {
 
     const Storage = await ethers.getContractFactory("Storage");
     const storage = await Storage.deploy();
+    await storage.deployed();
 
     return { storage, owner, otherAccount };
   }
@@ -29,5 +30,21 @@ describe("Storage", function () {
       await storage.store(15);
       expect(await storage.retrieve()).to.equal(15);
     });
+
+    it("Should emit StoreEvent", async function () {
+      const { storage, owner, otherAccount } = await deploy();
+  
+      await expect(storage.store(42))
+        .to.emit(storage, "StoreEvent");
+    });
+  
+    it("Should revert when > 100", async function () {
+      const { storage, owner, otherAccount } = await deploy();
+      await expect(storage.store(101)).to.be.reverted;
+    });
+
   });
+
+
+
 });
