@@ -1,7 +1,10 @@
 {
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.1",
-    "hardhat": "^2.12.6",
-    "@vechain/hardhat-plugin-ethers": "file:../hardhat-plugin-ethers"
+    "@vechainfoundation/hardhat-ethers": "^0.0.1",
+    "hardhat": "^2.12.6"
+  },
+  "dependencies": {
+    "@vechainfoundation/hardhat-vechain": "^0.0.1"
   }
 }
