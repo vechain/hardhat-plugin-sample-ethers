@@ -1,7 +1,11 @@
 {
+  "dependencies": {
+    "@nomiclabs/hardhat-truffle5": "^2.0.7",
+    "@vechainfoundation/hardhat-ethers": "^0.0.1",
+    "@vechainfoundation/hardhat-vechain": "^0.0.1"
+  },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^2.0.1",
-    "hardhat": "^2.12.6",
-    "@vechain/hardhat-plugin-ethers": "file:../hardhat-plugin-ethers"
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "hardhat": "^2.13.0"
   }
 }
