@@ -2,8 +2,8 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
 import '@nomiclabs/hardhat-truffle5';
-import '@vechainfoundation/hardhat-vechain'
-import '@vechainfoundation/hardhat-ethers'
+import '@vechain/hardhat-vechain'
+import '@vechain/hardhat-ethers'
 
 const config: HardhatUserConfig = {
   solidity: "0.8.18",  
