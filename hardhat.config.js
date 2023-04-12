@@ -1,7 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 
-require("@vechainfoundation/hardhat-vechain");
-require("@vechainfoundation/hardhat-ethers");
+require("@vechain/hardhat-vechain");
+require("@vechain/hardhat-ethers");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
