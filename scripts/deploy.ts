@@ -1,13 +1,15 @@
 import { ethers } from "hardhat";
 
+const CONTRACT_NAME = "Storage"; // Declare a global variable for the contract name
+
 async function main() {
-  const Lock = await ethers.getContractFactory("Storage");
+  const Lock = await ethers.getContractFactory(CONTRACT_NAME); // Use the global variable
   const lock = await Lock.deploy();
 
   await lock.deployed();
 
   console.log(
-    `Storage deployed to ${lock.address}`
+    `${CONTRACT_NAME} deployed to ${lock.address}` // Use the global variable
   );
 }
 
