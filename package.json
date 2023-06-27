@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "npx hardhat test"
+  },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
@@ -10,8 +13,8 @@
     "@typechain/hardhat": "^6.1.2",
     "@types/chai": "^4.2.0",
     "@types/mocha": ">=9.1.0",
-    "@vechain/hardhat-ethers": "^0.1.1",
-    "@vechain/hardhat-vechain": "^0.1.1",
+    "@vechain/hardhat-ethers": "^0.1.2",
+    "@vechain/hardhat-vechain": "^0.1.2",
     "chai": "^4.2.0",
     "hardhat": "^2.12.6",
     "hardhat-gas-reporter": "^1.0.8",
