@@ -31,10 +31,11 @@ jobs:
 
       - name: Install dependencies
         run: |
+          docker-compose up -d
           npm install
 
       - name: Unit tests and coverage
-        run: npx hardhat coverage
+        run: npx hardhat test --network vechain
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
