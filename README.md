@@ -56,6 +56,11 @@ Multi network configuration can be tested with:
 npx hardhat test --network vechain_solo  
 ```
 
+Thor solo node can be started via docker-compose
+```shell
+docker-compose up -d  
+```
+
 Try running some of the following tasks:
 
 ```shell
