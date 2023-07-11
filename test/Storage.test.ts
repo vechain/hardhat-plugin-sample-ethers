@@ -43,6 +43,11 @@ describe("Storage", function () {
       await expect(storage.store(101)).to.be.reverted;
     });
 
+    it("Should revert when > 100 with permission denied", async function () {
+      const { storage, owner, otherAccount } = await deploy();
+      expect(await storage.store(101)).to.be.revertedWith('Number must be < 100');
+    });
+
   });
 
 
