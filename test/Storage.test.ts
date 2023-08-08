@@ -1,4 +1,6 @@
-const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
+import {ethers} from "hardhat";
+import {ClausesBuilder} from "../../hardhat-plugins/packages/vechain/dist/clausesBuilder";
+
 const { expect } = require("chai");
 
 describe("Storage", function () {
@@ -12,9 +14,10 @@ describe("Storage", function () {
 
     const Storage = await ethers.getContractFactory("Storage");
     const storage = await Storage.deploy();
+    const abi = Storage.interface.format(ethers.utils.FormatTypes.json) as string;
     await storage.deployed();
 
-    return { storage, owner, otherAccount };
+    return { storage, owner, otherAccount, abi };
   }
 
   describe("Deployment", function () {
@@ -33,11 +36,11 @@ describe("Storage", function () {
 
     it("Should emit StoreEvent", async function () {
       const { storage, owner, otherAccount } = await deploy();
-  
+
       await expect(storage.store(42))
         .to.emit(storage, "StoreEvent");
     });
-  
+
     it("Should revert when > 100", async function () {
       const { storage, owner, otherAccount } = await deploy();
       await expect(storage.store(101)).to.be.reverted;
@@ -45,9 +48,35 @@ describe("Storage", function () {
 
     it("Should revert when > 100 with permission denied", async function () {
       const { storage, owner, otherAccount } = await deploy();
-      expect(await storage.store(101)).to.be.revertedWith('Number must be < 100');
+      await expect(storage.store(101)).to.be.revertedWith('Number must be < 100');
     });
 
+    it("Should process tx with multiple clauses", async function () {
+      const { storage, owner, otherAccount, abi } = await deploy();
+      const network = await ethers.provider.getNetwork();
+      let builder = new ClausesBuilder(storage);
+      builder = await builder.withClause({
+        args: [10],
+        abi: abi,
+        method: 'store'
+      }).withClause({
+        args: [95],
+        abi: abi,
+        method: 'store'
+      });
+      if (network.name.includes('vechain')) {
+        const tx = await builder.send();
+        expect(tx).to.exist;
+      } else {
+        let error: Error | undefined;
+        try {
+          await builder.send();
+        } catch (e) {
+          error = e as Error;
+        }
+        expect(error?.message).to.equal('vechain hardhat plugin requires vechain network for clauses operation')
+      }
+    });
   });
 
 
