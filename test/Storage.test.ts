@@ -1,5 +1,5 @@
 import {ethers} from "hardhat";
-import {ClausesBuilder} from "../../hardhat-plugins/packages/vechain/dist/clausesBuilder";
+import {ClausesBuilder} from "@vechain/hardhat-vechain/dist/clausesBuilder";
 
 const { expect } = require("chai");
 
