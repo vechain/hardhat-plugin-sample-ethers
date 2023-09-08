@@ -1,8 +1,8 @@
 import { ethers } from "hardhat";
 import { HttpNetworkConfig } from "hardhat/types";
-import { ClausesBuilder } from "../../hardhat-plugins/packages/vechain/dist/clausesBuilder";
-import { createWallet } from "../../hardhat-plugins/packages/vechain/dist/helpers/createWallet";
-import { createProvider} from "../../hardhat-plugins/packages/vechain/dist/helpers/createProvider";
+import { createWallet } from "@vechain/hardhat-vechain/dist/helpers/createWallet";
+import { createProvider } from "@vechain/hardhat-vechain/dist/helpers/createProvider";
+import { ClausesBuilder } from "@vechain/hardhat-vechain/dist/clausesBuilder";
 const { expect } = require("chai");
 
 describe("Storage", function () {
