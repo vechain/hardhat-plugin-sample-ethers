@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           docker-compose up -d
-          rm -r node_modules
+          rm -r package-lock.json
           npm install
 
       - name: Unit tests and coverage
