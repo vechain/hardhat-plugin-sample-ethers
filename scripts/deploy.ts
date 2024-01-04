@@ -11,8 +11,6 @@ async function main() {
   console.log(
     `${CONTRACT_NAME} deployed to ${await storage.getAddress()}` // Use the global variable
   );
-
-  process.exit(0);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
