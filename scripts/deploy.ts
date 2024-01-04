@@ -6,10 +6,10 @@ async function main() {
   const Storage = await ethers.getContractFactory(CONTRACT_NAME); // Use the global variable
   const storage = await Storage.deploy();
 
-  await storage.deployed();
+  await storage.waitForDeployment();
 
   console.log(
-    `${CONTRACT_NAME} deployed to ${storage.address}` // Use the global variable
+    `${CONTRACT_NAME} deployed to ${await storage.getAddress()}` // Use the global variable
   );
 }
 
